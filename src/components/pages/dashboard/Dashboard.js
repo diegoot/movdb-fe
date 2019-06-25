@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import * as exampleActions from '../../../actions/example'
 import { Layout } from 'antd'
 
-import './Dashboard.css'
+import './styles.css'
 
 const { Sider, Content } = Layout
 

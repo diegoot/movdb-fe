@@ -1,0 +1,9 @@
+.layout,
+.header,
+.footer {
+  background-color: transparent;
+}
+
+.header {
+  padding: 0;
+}

@@ -1,13 +1,17 @@
 import React from 'react'
-import { Layout } from 'antd'
+import { Layout, Icon } from 'antd'
+
+import './styles.css'
 
 const { Content } = Layout
 
 const NotFound = () => {
   return (
-    <Content>
-      <div>404</div>
-      <div>Not Found</div>
+    <Content className="fof-container">
+      <div className="fof">
+        4<Icon type="frown" theme="twoTone" />4
+      </div>
+      <div className="message">Oops ! Nothing found here</div>
     </Content>
   )
 }

@@ -1,0 +1,16 @@
+.fof {
+  color: #f00;
+  font-size: 100px;
+}
+
+.message {
+  font-size: 30px;
+  color: #000;
+}
+
+.fof-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 160px 0;
+}

@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import Login from './pages/Login/Login'
 import NotFound from './pages/NotFound/NotFound'
 import AppHeader from './AppHeader/AppHeader'
+import AppFooter from './AppFooter/AppFooter'
 
 import 'antd/dist/antd.css'
 import './styles.css'
@@ -22,7 +23,9 @@ const App = () => {
         <Route path="/login" render={Login} />
         <Route render={NotFound} />
       </Switch>
-      <Footer className="footer">Footer</Footer>
+      <Footer className="footer">
+        <AppFooter />
+      </Footer>
     </Layout>
   )
 }

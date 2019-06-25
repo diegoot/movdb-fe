@@ -4,6 +4,7 @@
   background-color: transparent;
 }
 
-.header {
+.header,
+.footer {
   padding: 0;
 }

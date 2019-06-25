@@ -1,8 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as exampleActions from '../../../actions/example'
+import { Layout } from 'antd'
 
 import './Dashboard.css'
+
+const { Sider, Content } = Layout
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -12,12 +15,10 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.props.syncMessage}
-        {this.props.isFetching && <div>Fetching</div>}
-        {!this.props.isFetching && this.props.error && <div>Error</div>}
-        {!this.props.isFetching && <div>{this.props.asyncMessage}</div>}
-      </div>
+      <Layout>
+        <Sider>Sider</Sider>
+        <Content>Content</Content>
+      </Layout>
     )
   }
 }

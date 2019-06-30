@@ -1,21 +1,22 @@
 .app-footer {
   background-color: #eee;
   padding: 30px;
-  display: flex;
-  justify-content: space-evenly;
   color: #000;
   font-weight: bold;
 }
 
-.app-footer > ul > li {
+.app-footer ul > li {
   list-style-type: none;
 }
 
-.app-footer > .social > li {
+.app-footer .social > li {
   display: inline-block;
 }
 
-.anticon.footer-icon {
+.social li:not(:first-child) {
   margin-left: 10px;
+}
+
+.anticon.footer-icon {
   font-size: 20px;
 }

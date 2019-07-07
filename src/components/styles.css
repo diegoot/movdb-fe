@@ -8,3 +8,9 @@
 .footer {
   padding: 0;
 }
+
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}

@@ -1,0 +1,26 @@
+import * as actionTypes from '../constants/actionsTypes/movies'
+
+export default (state = {}, action) => {
+  switch (action.type) {
+    case actionTypes.MOST_N_RECENT_MOVIES_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isError: false,
+        list: []
+      })
+    case actionTypes.MOST_N_RECENT_MOVIES_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        error: false,
+        list: action.payload
+      })
+    case actionTypes.MOST_N_RECENT_MOVIES_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isError: true,
+        list: []
+      })
+    default:
+      return state
+  }
+}

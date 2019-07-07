@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as exampleActions from '../../../actions/example'
+import * as moviesActions from '../../../actions/movies'
+import * as genresActions from '../../../actions/genres'
 import { Layout } from 'antd'
 
 import './styles.css'
@@ -9,27 +10,46 @@ const { Sider, Content } = Layout
 
 class Dashboard extends React.Component {
   componentDidMount() {
-    this.props.asyncAction()
-    this.props.syncAction()
+    const { dispatch } = this.props
+
+    dispatch(moviesActions.getMostNRecentMovies())
+    dispatch(genresActions.getAllGenres())
   }
 
   render() {
+    const { movies, genres } = this.props
+
     return (
       <Layout>
-        <Sider>Sider</Sider>
-        <Content>Content</Content>
+        <Sider className="sidebar" breakpoint="lg" collapsedWidth="0">
+          {genres.list &&
+            genres.list.map(genre => {
+              return (
+                <div key={genre._id}>
+                  <div>{genre.name}</div>
+                </div>
+              )
+            })}
+        </Sider>
+        <Content className="content">
+          {movies.list &&
+            movies.list.map(movie => {
+              return (
+                <div key={movie._id}>
+                  <div>{movie.title}</div>
+                  <div>{movie.year}</div>
+                </div>
+              )
+            })}
+        </Content>
       </Layout>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  syncMessage: state.example.syncMessage,
-  asyncMessage: state.example.asyncMessage,
-  isFetching: state.example.isFetching
+  movies: state.movies,
+  genres: state.genres
 })
 
-export default connect(
-  mapStateToProps,
-  exampleActions
-)(Dashboard)
+export default connect(mapStateToProps)(Dashboard)

@@ -1,3 +1,10 @@
-.dashboard {
-  background-color: #ddd;
+.sidebar {
+  position: fixed;
+  padding-top: 64px;
+  color: #fff;
+}
+
+.content {
+  padding-top: 64px;
+  background-color: #fff;
 }

@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import example from './example'
+import movies from './movies'
+import genres from './genres'
 
 export default combineReducers({
-  example
+  movies,
+  genres
 })

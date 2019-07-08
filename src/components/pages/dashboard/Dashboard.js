@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import * as moviesActions from '../../../actions/movies'
 import * as genresActions from '../../../actions/genres'
+import MoviesList from './components/MoviesList/MoviesList'
 import { Layout } from 'antd'
 
 import './styles.css'
@@ -32,15 +33,7 @@ class Dashboard extends React.Component {
             })}
         </Sider>
         <Content className="content">
-          {movies.list &&
-            movies.list.map(movie => {
-              return (
-                <div key={movie._id}>
-                  <div>{movie.title}</div>
-                  <div>{movie.year}</div>
-                </div>
-              )
-            })}
+          <MoviesList movies={movies.list} />
         </Content>
       </Layout>
     )

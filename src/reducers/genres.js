@@ -20,6 +20,10 @@ export default (state = {}, action) => {
         isError: true,
         list: []
       })
+    case actionTypes.SET_SELECTED_GENRE:
+      return Object.assign({}, state, {
+        selectedGenre: action.payload
+      })
     default:
       return state
   }

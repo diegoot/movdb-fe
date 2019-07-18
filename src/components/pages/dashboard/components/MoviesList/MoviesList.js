@@ -10,10 +10,14 @@ const MoviesList = props => {
   const { movies } = props
 
   return (
-    <Row gutter={16}>
+    <Row gutter={16} type="flex">
       {movies.map(movie => (
         <Col lg={8} className="col" key={movie._id}>
-          <Card hoverable cover={<img alt="movie-cover" src={movie.poster} />}>
+          <Card
+            hoverable
+            cover={<img alt="movie-cover" src={movie.poster} />}
+            className="card"
+          >
             <Meta title={movie.title} description={movie.synopsis} />
           </Card>
         </Col>

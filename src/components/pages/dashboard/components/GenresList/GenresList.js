@@ -13,7 +13,12 @@ const GenresList = props => {
   }
 
   return (
-    <Menu theme="dark" onClick={onClick} defaultSelectedKeys={[selectedGenre]}>
+    <Menu
+      theme="dark"
+      onClick={onClick}
+      defaultSelectedKeys={[selectedGenre]}
+      className="menu"
+    >
       {genres.map(genre => (
         <Menu.Item key={genre._id}>{genre.name}</Menu.Item>
       ))}

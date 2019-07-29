@@ -1,0 +1,2 @@
+export const FLAG_ACTIVE_LINK = 'FLAG_ACTIVE_LINK'
+export const FLAG_HIDDEN_LINK = 'FLAG_HIDDEN_LINK'

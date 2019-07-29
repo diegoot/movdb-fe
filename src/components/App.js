@@ -19,7 +19,7 @@ const App = () => {
       </Header>
       <Switch>
         <Route exact path="/" component={Dashboard} />
-        <Route path="/login" render={Login} />
+        <Route path="/login" component={Login} />
         <Route render={NotFound} />
       </Switch>
     </Layout>

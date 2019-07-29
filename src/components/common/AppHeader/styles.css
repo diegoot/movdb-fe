@@ -5,7 +5,12 @@
   padding: 0 14px;
 }
 
-.header-item {
+.header-item a,
+.header-item:link a,
+.header-item:visited a,
+.header-item:hover a,
+.header-item:active a {
+  display: block;
   color: #fff;
   font-weight: bold;
 }

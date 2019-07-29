@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Layout } from 'antd'
 import * as moviesActions from '../../../actions/movies'
 import * as genresActions from '../../../actions/genres'
+import * as headerLinkActions from '../../../actions/headerLinks'
 import MoviesList from './components/MoviesList/MoviesList'
 import GenresList from './components/GenresList/GenresList'
-import { Layout } from 'antd'
+import { HEADER_LINKS } from '../../../constants/general'
 
 import './styles.css'
 
@@ -12,10 +14,17 @@ const { Sider, Content } = Layout
 
 class Dashboard extends React.Component {
   componentDidMount() {
-    const { getMostNRecentMovies, getAllGenres } = this.props
+    const { getMostNRecentMovies, getAllGenres, flagActiveLink } = this.props
 
+    flagActiveLink()
     getMostNRecentMovies()
     getAllGenres()
+  }
+
+  componentWillUnmount() {
+    const { flagHiddenLink } = this.props
+
+    flagHiddenLink()
   }
 
   render() {
@@ -50,7 +59,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch(moviesActions.getMoviesForGenre(genre.name)).then(() => {
       dispatch(genresActions.setSelectedGenre(genre.id))
     })
-  }
+  },
+  flagActiveLink: () =>
+    dispatch(headerLinkActions.flagActiveLink(HEADER_LINKS.LOGIN)),
+  flagHiddenLink: () =>
+    dispatch(headerLinkActions.flagHiddenLink(HEADER_LINKS.LOGIN))
 })
 
 export default connect(

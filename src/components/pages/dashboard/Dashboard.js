@@ -28,16 +28,12 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { movies, genres, updateDashboard, selectedGenre } = this.props
+    const { movies, genres, updateDashboard } = this.props
 
     return (
       <Layout>
         <Sider className="sidebar" breakpoint="lg" collapsedWidth="0">
-          <GenresList
-            genres={genres.list}
-            onSelectedGenre={updateDashboard}
-            selectedGenre={selectedGenre}
-          />
+          <GenresList genres={genres.list} onSelectedGenre={updateDashboard} />
         </Sider>
         <Content className="content">
           <MoviesList movies={movies.list} />
@@ -56,9 +52,7 @@ const mapDispatchToProps = dispatch => ({
   getMostNRecentMovies: () => dispatch(moviesActions.getMostNRecentMovies()),
   getAllGenres: () => dispatch(genresActions.getAllGenres()),
   updateDashboard: genre => {
-    dispatch(moviesActions.getMoviesForGenre(genre.name)).then(() => {
-      dispatch(genresActions.setSelectedGenre(genre.id))
-    })
+    dispatch(moviesActions.getMoviesForGenre(genre.name))
   },
   flagActiveLink: () =>
     dispatch(headerLinkActions.flagActiveLink(HEADER_LINKS.LOGIN)),

@@ -18,8 +18,3 @@ export const getAllGenres = () => async disptach => {
     })
   }
 }
-
-export const setSelectedGenre = id => ({
-  type: actionTypes.SET_SELECTED_GENRE,
-  payload: id
-})

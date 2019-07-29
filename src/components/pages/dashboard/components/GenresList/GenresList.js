@@ -5,7 +5,7 @@ import { Menu } from 'antd'
 import './styles.css'
 
 const GenresList = props => {
-  const { genres, onSelectedGenre, selectedGenre } = props
+  const { genres, onSelectedGenre } = props
 
   const onClick = ({ item, key }) => {
     const selectedGenre = genres.find(genre => genre._id === key)
@@ -13,12 +13,7 @@ const GenresList = props => {
   }
 
   return (
-    <Menu
-      theme="dark"
-      onClick={onClick}
-      defaultSelectedKeys={[selectedGenre]}
-      className="menu"
-    >
+    <Menu theme="dark" onClick={onClick} className="menu">
       {genres.map(genre => (
         <Menu.Item key={genre._id}>{genre.name}</Menu.Item>
       ))}
@@ -28,14 +23,12 @@ const GenresList = props => {
 
 GenresList.propTypes = {
   genres: PropTypes.array,
-  onSelectedGenre: PropTypes.func,
-  selectedGenre: PropTypes.string
+  onSelectedGenre: PropTypes.func
 }
 
 GenresList.defaultProps = {
   genres: [],
-  onSelectedGenre: () => null,
-  selectedGenre: ''
+  onSelectedGenre: () => null
 }
 
 export default GenresList

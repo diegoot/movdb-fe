@@ -10,17 +10,17 @@ const AppHeader = props => {
   return (
     <div className="app-header">
       <img src={logo} alt="logo" className="logo" />
-      {props.headerLinks[HEADER_LINKS.LOGIN] && (
+      {props.header[HEADER_LINKS.LOGIN] && (
         <span className="header-item">
           <Link to="/login">Login</Link>
         </span>
       )}
-      {props.headerLinks[HEADER_LINKS.ADD_MOVIE] && (
+      {props.header[HEADER_LINKS.ADD_MOVIE] && (
         <span className="header-item">
           <Link to="/">Add Movie</Link>
         </span>
       )}
-      {props.headerLinks[HEADER_LINKS.DASHBOARD] && (
+      {props.header[HEADER_LINKS.DASHBOARD] && (
         <span className="header-item">
           <Link to="/">Dashboard</Link>
         </span>
@@ -30,7 +30,7 @@ const AppHeader = props => {
 }
 
 const mapStateToProps = state => ({
-  headerLinks: state.headerLinks
+  header: state.header
 })
 
 const mapDispatchToProps = dispatch => ({})

@@ -2,21 +2,21 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import * as headerActions from '../../../actions/headerLinks'
+import * as headerActions from '../../../actions/header'
 import { HEADER_LINKS } from '../../../constants/general'
 import LoginForm from './components/LoginForm/LoginForm'
 
 class Login extends Component {
   componentDidMount() {
-    const { flagActiveLink } = this.props
+    const { activeDashboardLink } = this.props
 
-    flagActiveLink()
+    activeDashboardLink()
   }
 
   componentWillUnmount() {
-    const { flagHiddenLink } = this.props
+    const { hideDashboardLink } = this.props
 
-    flagHiddenLink()
+    hideDashboardLink()
   }
 
   render() {
@@ -35,9 +35,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  flagActiveLink: () =>
+  activeDashboardLink: () =>
     dispatch(headerActions.flagActiveLink(HEADER_LINKS.DASHBOARD)),
-  flagHiddenLink: () =>
+  hideDashboardLink: () =>
     dispatch(headerActions.flagHiddenLink(HEADER_LINKS.DASHBOARD))
 })
 

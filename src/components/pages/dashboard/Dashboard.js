@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Layout } from 'antd'
 import * as moviesActions from '../../../actions/movies'
 import * as genresActions from '../../../actions/genres'
-import * as headerLinkActions from '../../../actions/headerLinks'
+import * as headerActions from '../../../actions/header'
 import MoviesList from './components/MoviesList/MoviesList'
 import GenresList from './components/GenresList/GenresList'
 import { HEADER_LINKS } from '../../../constants/general'
@@ -16,7 +16,7 @@ class Dashboard extends React.Component {
   componentDidMount() {
     const { getMostNRecentMovies, getAllGenres, flagActiveLink } = this.props
 
-    flagActiveLink()
+    flagActiveLink(HEADER_LINKS.LOGIN)
     getMostNRecentMovies()
     getAllGenres()
   }
@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
   componentWillUnmount() {
     const { flagHiddenLink } = this.props
 
-    flagHiddenLink()
+    flagHiddenLink(HEADER_LINKS.LOGIN)
   }
 
   render() {
@@ -54,10 +54,8 @@ const mapDispatchToProps = dispatch => ({
   updateDashboard: genre => {
     dispatch(moviesActions.getMoviesForGenre(genre.name))
   },
-  flagActiveLink: () =>
-    dispatch(headerLinkActions.flagActiveLink(HEADER_LINKS.LOGIN)),
-  flagHiddenLink: () =>
-    dispatch(headerLinkActions.flagHiddenLink(HEADER_LINKS.LOGIN))
+  flagActiveLink: link => dispatch(headerActions.flagActiveLink(link)),
+  flagHiddenLink: link => dispatch(headerActions.flagHiddenLink(link))
 })
 
 export default connect(

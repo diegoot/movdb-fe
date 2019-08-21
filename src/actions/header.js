@@ -1,4 +1,4 @@
-import * as actionTypes from '../constants/actionsTypes/headerLinks'
+import * as actionTypes from '../constants/actionsTypes/header'
 
 export const flagActiveLink = link => ({
   type: actionTypes.FLAG_ACTIVE_LINK,

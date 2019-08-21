@@ -1,4 +1,4 @@
-import * as actionTypes from '../constants/actionsTypes/headerLinks'
+import * as actionTypes from '../constants/actionsTypes/header'
 
 export default (state = {}, action) => {
   switch (action.type) {

@@ -6,6 +6,7 @@ import Login from './pages/Login/Login'
 import AddMovie from './pages/AddMovie/AddMovie'
 import NotFound from './pages/NotFound/NotFound'
 import AppHeader from './common/AppHeader/AppHeader'
+import PrivateRoute from './common/PrivateRoute/PrivateRoute'
 
 import 'antd/dist/antd.css'
 import './styles.css'
@@ -21,7 +22,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Dashboard} />
         <Route path="/login" component={Login} />
-        <Route path="/add-movie" component={AddMovie} />
+        <PrivateRoute path="/add-movie" component={AddMovie} />
         <Route render={NotFound} />
       </Switch>
     </Layout>

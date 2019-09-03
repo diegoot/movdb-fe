@@ -1,3 +1,4 @@
+import jwtDecode from 'jwt-decode'
 import * as actionTypes from '../constants/actionsTypes/users'
 
 export const loginUser = (email, password) => async dispatch => {
@@ -22,5 +23,36 @@ export const loginUser = (email, password) => async dispatch => {
       type: actionTypes.LOGIN_USER_FAILURE,
       payload: error
     })
+  }
+}
+
+export const logoutUser = history => {
+  localStorage.removeItem('jwt')
+
+  history.push('/')
+
+  return {
+    type: actionTypes.LOGOUT_USER
+  }
+}
+
+export const checkLoggedInUser = () => {
+  const jwt = localStorage.getItem('jwt')
+  let isLoggedInUser = false
+
+  if (jwt) {
+    const decoded = jwtDecode(jwt)
+    const now = Date.now() / 1000
+
+    if (decoded.exp <= now) {
+      localStorage.removeItem('jwt')
+    } else {
+      isLoggedInUser = true
+    }
+  }
+
+  return {
+    type: actionTypes.CHECK_LOGGED_IN_USER,
+    payload: isLoggedInUser
   }
 }

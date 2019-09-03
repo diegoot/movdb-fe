@@ -20,6 +20,10 @@ export default (state = {}, action) => {
         isError: true,
         isLoggedIn: false
       })
+    case actionTypes.LOGOUT_USER:
+      return Object.assign({}, state, { isLoggedIn: false })
+    case actionTypes.CHECK_LOGGED_IN_USER:
+      return Object.assign({}, state, { isLoggedIn: action.payload })
     default:
       return state
   }

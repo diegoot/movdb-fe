@@ -9,3 +9,7 @@ export const flagHiddenLink = link => ({
   type: actionTypes.FLAG_HIDDEN_LINK,
   payload: link
 })
+
+export const resetLinks = () => ({
+  type: actionTypes.RESET_LINKS
+})

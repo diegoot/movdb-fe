@@ -14,17 +14,30 @@ const { Sider, Content } = Layout
 
 class Dashboard extends React.Component {
   componentDidMount() {
-    const { getMostNRecentMovies, getAllGenres, flagActiveLink } = this.props
+    const {
+      getMostNRecentMovies,
+      getAllGenres,
+      flagActiveLink,
+      users
+    } = this.props
 
-    flagActiveLink(HEADER_LINKS.LOGIN)
+    if (users.isLoggedIn) {
+      flagActiveLink(HEADER_LINKS.ADD_MOVIE)
+    } else {
+      flagActiveLink(HEADER_LINKS.LOGIN)
+    }
     getMostNRecentMovies()
     getAllGenres()
   }
 
   componentWillUnmount() {
-    const { flagHiddenLink } = this.props
+    const { flagHiddenLink, users } = this.props
 
-    flagHiddenLink(HEADER_LINKS.LOGIN)
+    if (users.isLoggedIn) {
+      flagHiddenLink(HEADER_LINKS.ADD_MOVIE)
+    } else {
+      flagHiddenLink(HEADER_LINKS.LOGIN)
+    }
   }
 
   render() {
@@ -45,7 +58,8 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = state => ({
   movies: state.movies,
-  genres: state.genres
+  genres: state.genres,
+  users: state.users
 })
 
 const mapDispatchToProps = dispatch => ({

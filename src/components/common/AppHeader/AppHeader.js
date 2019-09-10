@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom'
 import logo from '../../../assets/logo.png'
 import { HEADER_LINKS } from '../../../constants/general'
 import { logoutUser } from '../../../actions/users'
-import { resetLinks } from '../../../actions/header'
+import { resetLinks, flagActiveLink } from '../../../actions/header'
 
 import './styles.css'
 
@@ -31,7 +31,7 @@ const AppHeader = props => {
         )}
         {props.users.isLoggedIn && (
           <span className="header-item" onClick={props.logoutUser}>
-            Logout
+            logout
           </span>
         )}
       </div>
@@ -48,6 +48,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   logoutUser: () => {
     dispatch(logoutUser(ownProps.history))
     dispatch(resetLinks())
+    dispatch(flagActiveLink(HEADER_LINKS.LOGIN))
   }
 })
 

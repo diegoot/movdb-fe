@@ -14,20 +14,20 @@ const { Sider, Content } = Layout
 
 class Dashboard extends React.Component {
   componentDidMount() {
-    const {
-      getMostNRecentMovies,
-      getAllGenres,
-      flagActiveLink,
-      users
-    } = this.props
+    const { getMostNRecentMovies, getAllGenres } = this.props
+
+    getMostNRecentMovies()
+    getAllGenres()
+  }
+
+  componentDidUpdate() {
+    const { flagActiveLink, users } = this.props
 
     if (users.isLoggedIn) {
       flagActiveLink(HEADER_LINKS.ADD_MOVIE)
     } else {
       flagActiveLink(HEADER_LINKS.LOGIN)
     }
-    getMostNRecentMovies()
-    getAllGenres()
   }
 
   componentWillUnmount() {

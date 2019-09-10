@@ -5,7 +5,6 @@ const initialState = {}
 
 Object.values(HEADER_LINKS).forEach(link => {
   initialState[link] = false
-  if (link === HEADER_LINKS.LOGIN) initialState[link] = true
 })
 
 export default (state = initialState, action) => {

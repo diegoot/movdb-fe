@@ -9,6 +9,7 @@ import NotFound from './pages/NotFound/NotFound'
 import AppHeader from './common/AppHeader/AppHeader'
 import PrivateRoute from './common/PrivateRoute/PrivateRoute'
 import { checkLoggedInUser } from '../actions/users'
+import { HEADER_LINKS } from '../constants/general'
 
 import 'antd/dist/antd.css'
 import './styles.css'
@@ -29,9 +30,16 @@ class App extends React.Component {
           <AppHeader />
         </Header>
         <Switch>
-          <Route exact path="/" component={Dashboard} />
-          <Route path="/login" component={Login} />
-          <PrivateRoute path="/add-movie" component={AddMovie} />
+          <Route
+            exact
+            path={HEADER_LINKS.DASHBOARD.PATH}
+            component={Dashboard}
+          />
+          <Route path={HEADER_LINKS.LOGIN.PATH} component={Login} />
+          <PrivateRoute
+            path={HEADER_LINKS.ADD_MOVIE.PATH}
+            component={AddMovie}
+          />
           <Route render={NotFound} />
         </Switch>
       </Layout>

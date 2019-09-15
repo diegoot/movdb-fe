@@ -24,9 +24,9 @@ class Dashboard extends React.Component {
     const { flagActiveLink, users } = this.props
 
     if (users.isLoggedIn) {
-      flagActiveLink(HEADER_LINKS.ADD_MOVIE)
+      flagActiveLink(HEADER_LINKS.ADD_MOVIE.KEY)
     } else {
-      flagActiveLink(HEADER_LINKS.LOGIN)
+      flagActiveLink(HEADER_LINKS.LOGIN.KEY)
     }
   }
 
@@ -34,9 +34,9 @@ class Dashboard extends React.Component {
     const { flagHiddenLink, users } = this.props
 
     if (users.isLoggedIn) {
-      flagHiddenLink(HEADER_LINKS.ADD_MOVIE)
+      flagHiddenLink(HEADER_LINKS.ADD_MOVIE.KEY)
     } else {
-      flagHiddenLink(HEADER_LINKS.LOGIN)
+      flagHiddenLink(HEADER_LINKS.LOGIN.KEY)
     }
   }
 

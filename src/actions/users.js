@@ -1,5 +1,6 @@
 import jwtDecode from 'jwt-decode'
 import * as actionTypes from '../constants/actionsTypes/users'
+import { HEADER_LINKS } from '../constants/general'
 
 export const loginUser = (email, password) => async dispatch => {
   dispatch({
@@ -29,7 +30,7 @@ export const loginUser = (email, password) => async dispatch => {
 export const logoutUser = history => {
   localStorage.removeItem('jwt')
 
-  history.push('/')
+  history.push(HEADER_LINKS.DASHBOARD.PATH)
 
   return {
     type: actionTypes.LOGOUT_USER

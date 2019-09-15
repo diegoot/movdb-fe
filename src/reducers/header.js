@@ -4,7 +4,7 @@ import { HEADER_LINKS } from '../constants/general'
 const initialState = {}
 
 Object.values(HEADER_LINKS).forEach(link => {
-  initialState[link] = false
+  initialState[link.KEY] = false
 })
 
 export default (state = initialState, action) => {

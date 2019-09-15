@@ -36,9 +36,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   activeDashboardLink: () =>
-    dispatch(headerActions.flagActiveLink(HEADER_LINKS.DASHBOARD)),
+    dispatch(headerActions.flagActiveLink(HEADER_LINKS.DASHBOARD.KEY)),
   hideDashboardLink: () =>
-    dispatch(headerActions.flagHiddenLink(HEADER_LINKS.DASHBOARD))
+    dispatch(headerActions.flagHiddenLink(HEADER_LINKS.DASHBOARD.KEY))
 })
 
 export default connect(

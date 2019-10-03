@@ -40,8 +40,14 @@ class Dashboard extends React.Component {
     }
   }
 
+  deleteMovie = id => {
+    const { deleteMovie } = this.props
+
+    deleteMovie(id)
+  }
+
   render() {
-    const { movies, genres, updateDashboard } = this.props
+    const { movies, genres, updateDashboard, users } = this.props
 
     return (
       <Layout>
@@ -49,7 +55,11 @@ class Dashboard extends React.Component {
           <GenresList genres={genres.list} onSelectedGenre={updateDashboard} />
         </Sider>
         <Content className="content">
-          <MoviesList movies={movies.list} />
+          <MoviesList
+            movies={movies.list}
+            showActions={users.isLoggedIn}
+            deleteAction={this.deleteMovie}
+          />
         </Content>
       </Layout>
     )
@@ -69,7 +79,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(moviesActions.getMoviesForGenre(genre.name))
   },
   flagActiveLink: link => dispatch(headerActions.flagActiveLink(link)),
-  flagHiddenLink: link => dispatch(headerActions.flagHiddenLink(link))
+  flagHiddenLink: link => dispatch(headerActions.flagHiddenLink(link)),
+  deleteMovie: id => dispatch(moviesActions.deleteMovie(id))
 })
 
 export default connect(

@@ -77,3 +77,25 @@ export const createMovie = (
     })
   }
 }
+
+export const deleteMovie = movieId => async dispatch => {
+  dispatch({
+    type: actionTypes.DELETE_MOVIE_REQUEST
+  })
+  try {
+    const response = await fetch(`http://localhost:3014/movies/${movieId}`, {
+      method: 'DELETE'
+    })
+    if (response.status !== 200) {
+      throw new Error()
+    }
+    dispatch({
+      type: actionTypes.DELETE_MOVIE_SUCCESS,
+      payload: movieId
+    })
+  } catch {
+    dispatch({
+      type: actionTypes.DELETE_MOVIE_FAILURE
+    })
+  }
+}

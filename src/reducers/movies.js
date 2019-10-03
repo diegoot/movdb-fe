@@ -53,6 +53,22 @@ export default (state = {}, action) => {
         isFetching: false,
         isError: true
       })
+    case actionTypes.DELETE_MOVIE_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isError: false
+      })
+    case actionTypes.DELETE_MOVIE_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        error: false,
+        list: state.list.filter(movie => movie._id !== action.payload)
+      })
+    case actionTypes.DELETE_MOVIE_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isError: true
+      })
     default:
       return state
   }

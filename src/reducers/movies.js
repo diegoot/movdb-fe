@@ -38,6 +38,21 @@ export default (state = {}, action) => {
         isError: true,
         list: []
       })
+    case actionTypes.CREATE_MOVIE_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isError: false
+      })
+    case actionTypes.CREATE_MOVIE_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        error: false
+      })
+    case actionTypes.CREATE_MOVIE_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isError: true
+      })
     default:
       return state
   }

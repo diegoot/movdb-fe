@@ -45,3 +45,35 @@ export const getMoviesForGenre = genre => dispatch =>
       reject()
     }
   })
+
+export const createMovie = (
+  title,
+  year,
+  director,
+  poster,
+  genre,
+  synopsis
+) => async dispatch => {
+  dispatch({
+    type: actionTypes.CREATE_MOVIE_REQUEST
+  })
+  try {
+    const response = await fetch('http://localhost:3014/movies', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ title, year, director, poster, genre, synopsis })
+    })
+    if (response.status !== 201) {
+      throw new Error()
+    }
+    dispatch({
+      type: actionTypes.CREATE_MOVIE_SUCCESS
+    })
+  } catch {
+    dispatch({
+      type: actionTypes.CREATE_MOVIE_FAILURE
+    })
+  }
+}

@@ -12,7 +12,9 @@ import './styles.css'
 const AppHeader = props => {
   return (
     <div className="app-header">
-      <img src={logo} alt="logo" className="logo" />
+      <Link to="/">
+        <img src={logo} alt="logo" className="logo" />
+      </Link>
       <div className="header-links">
         {props.header[HEADER_LINKS.LOGIN.KEY] && (
           <span className="header-item">

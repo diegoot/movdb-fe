@@ -58,10 +58,12 @@ export const createMovie = (
     type: actionTypes.CREATE_MOVIE_REQUEST
   })
   try {
+    const jwt = localStorage.getItem('jwt')
     const response = await fetch('http://localhost:3014/movies', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: jwt
       },
       body: JSON.stringify({ title, year, director, poster, genre, synopsis })
     })
@@ -83,8 +85,12 @@ export const deleteMovie = movieId => async dispatch => {
     type: actionTypes.DELETE_MOVIE_REQUEST
   })
   try {
+    const jwt = localStorage.getItem('jwt')
     const response = await fetch(`http://localhost:3014/movies/${movieId}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        Authorization: jwt
+      }
     })
     if (response.status !== 200) {
       throw new Error()

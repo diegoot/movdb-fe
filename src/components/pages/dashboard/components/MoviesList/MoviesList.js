@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col, Card, Icon, Popconfirm } from 'antd'
+import { Row, Col, Card, Icon, Popconfirm, Empty } from 'antd'
 
 import './styles.css'
 
@@ -11,6 +11,7 @@ const MoviesList = props => {
 
   return (
     <Row gutter={16} type="flex">
+      {movies && movies.length === 0 && <Empty className="empty" />}
       {movies.map(movie => {
         const actions = []
 

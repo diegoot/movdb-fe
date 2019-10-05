@@ -1,15 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-  Row,
-  Col,
-  Form,
-  Input,
-  InputNumber,
-  Button,
-  Select,
-  notification
-} from 'antd'
+import { Row, Col, Form, Input, InputNumber, Button, Select } from 'antd'
 
 import './styles.css'
 
@@ -20,18 +11,9 @@ class AddMovieForm extends React.Component {
   componentDidUpdate(prevProps) {
     const { movies, form } = this.props
 
-    if (prevProps.movies.isFetching && !movies.isFetching) {
-      if (!movies.isError) {
-        form.resetFields()
-        this.openNotification('success', 'Movie saved')
-      } else {
-        this.openNotification('error', 'We could not save the movie')
-      }
+    if (prevProps.movies.isFetching && !movies.isFetching && !movies.isError) {
+      form.resetFields()
     }
-  }
-
-  openNotification = (type, message) => {
-    notification[type]({ message })
   }
 
   handleSubmit = e => {

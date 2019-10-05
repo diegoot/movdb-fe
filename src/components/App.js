@@ -10,6 +10,7 @@ import AppHeader from './common/AppHeader/AppHeader'
 import PrivateRoute from './common/PrivateRoute/PrivateRoute'
 import { checkLoggedInUser } from '../actions/users'
 import { HEADER_LINKS } from '../constants/general'
+import Notification from './common/Notification/Notification'
 
 import 'antd/dist/antd.css'
 import './styles.css'
@@ -25,24 +26,27 @@ class App extends React.Component {
 
   render() {
     return (
-      <Layout className="layout">
-        <Header className="header">
-          <AppHeader />
-        </Header>
-        <Switch>
-          <Route
-            exact
-            path={HEADER_LINKS.DASHBOARD.PATH}
-            component={Dashboard}
-          />
-          <Route path={HEADER_LINKS.LOGIN.PATH} component={Login} />
-          <PrivateRoute
-            path={HEADER_LINKS.ADD_MOVIE.PATH}
-            component={AddMovie}
-          />
-          <Route render={NotFound} />
-        </Switch>
-      </Layout>
+      <React.Fragment>
+        <Notification />
+        <Layout className="layout">
+          <Header className="header">
+            <AppHeader />
+          </Header>
+          <Switch>
+            <Route
+              exact
+              path={HEADER_LINKS.DASHBOARD.PATH}
+              component={Dashboard}
+            />
+            <Route path={HEADER_LINKS.LOGIN.PATH} component={Login} />
+            <PrivateRoute
+              path={HEADER_LINKS.ADD_MOVIE.PATH}
+              component={AddMovie}
+            />
+            <Route render={NotFound} />
+          </Switch>
+        </Layout>
+      </React.Fragment>
     )
   }
 }

@@ -1,5 +1,6 @@
 import * as actionTypes from '../constants/actionsTypes/movies'
 import { N_MOST_RECENT_MOVIES } from '../constants/api'
+import { showNotification } from './notifications'
 
 export const getMostNRecentMovies = () => async dispatch => {
   dispatch({
@@ -73,10 +74,12 @@ export const createMovie = (
     dispatch({
       type: actionTypes.CREATE_MOVIE_SUCCESS
     })
+    dispatch(showNotification('success', 'Movie saved'))
   } catch {
     dispatch({
       type: actionTypes.CREATE_MOVIE_FAILURE
     })
+    dispatch(showNotification('error', 'We could not save the movie'))
   }
 }
 
@@ -99,9 +102,11 @@ export const deleteMovie = movieId => async dispatch => {
       type: actionTypes.DELETE_MOVIE_SUCCESS,
       payload: movieId
     })
+    dispatch(showNotification('success', 'Movie deleted'))
   } catch {
     dispatch({
       type: actionTypes.DELETE_MOVIE_FAILURE
     })
+    dispatch(showNotification('error', 'We could delete the movie'))
   }
 }

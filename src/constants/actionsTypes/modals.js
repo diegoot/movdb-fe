@@ -1,0 +1,2 @@
+export const SHOW_MODAL = 'SHOW_MODAL'
+export const RESET_MODAL_STATE = 'RESET_MODAL_STATE'

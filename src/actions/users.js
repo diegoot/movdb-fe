@@ -1,6 +1,9 @@
 import jwtDecode from 'jwt-decode'
 import * as actionTypes from '../constants/actionsTypes/users'
 import { HEADER_LINKS } from '../constants/general'
+import { showModal } from './modals'
+
+let timeoutId
 
 export const loginUser = (email, password) => async dispatch => {
   dispatch({
@@ -15,10 +18,16 @@ export const loginUser = (email, password) => async dispatch => {
       body: JSON.stringify({ email, password })
     })
     const json = await response.json()
-    localStorage.setItem('jwt', json.token)
+    const token = json.token
+    const decoded = jwtDecode(token)
+    localStorage.setItem('jwt', token)
     dispatch({
       type: actionTypes.LOGIN_USER_SUCCESS
     })
+    const deadTime = new Date(decoded.exp * 1000) - Date.now()
+    timeoutId = setTimeout(() => {
+      dispatch(showModal('Session expired', 'Please log in back'))
+    }, deadTime)
   } catch (error) {
     dispatch({
       type: actionTypes.LOGIN_USER_FAILURE,
@@ -29,6 +38,11 @@ export const loginUser = (email, password) => async dispatch => {
 
 export const logoutUser = history => {
   localStorage.removeItem('jwt')
+
+  if (timeoutId) {
+    clearTimeout(timeoutId)
+    timeoutId = undefined
+  }
 
   history.push(HEADER_LINKS.DASHBOARD.PATH)
 

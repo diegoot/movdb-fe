@@ -11,6 +11,7 @@ import PrivateRoute from './common/PrivateRoute/PrivateRoute'
 import { checkLoggedInUser } from '../actions/users'
 import { HEADER_LINKS } from '../constants/general'
 import Notification from './common/Notification/Notification'
+import Modal from './common/Modal/Modal'
 
 import 'antd/dist/antd.css'
 import './styles.css'
@@ -27,6 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <Modal />
         <Notification />
         <Layout className="layout">
           <Header className="header">

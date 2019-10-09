@@ -23,29 +23,26 @@ export const getMostNRecentMovies = () => async dispatch => {
   }
 }
 
-export const getMoviesForGenre = genre => dispatch =>
-  new Promise(async (resolve, reject) => {
-    dispatch({
-      type: actionTypes.MOVIES_FOR_GENRE_REQUEST
-    })
-    try {
-      const response = await fetch(
-        `http://localhost:3014/movies/forgenre/${genre}`
-      )
-      const json = await response.json()
-      dispatch({
-        type: actionTypes.MOVIES_FOR_GENRE_SUCCESS,
-        payload: json
-      })
-      resolve()
-    } catch (error) {
-      dispatch({
-        type: actionTypes.MOVIES_FOR_GENRE_FAILURE,
-        payload: error
-      })
-      reject()
-    }
+export const getMoviesForGenre = genre => async dispatch => {
+  dispatch({
+    type: actionTypes.MOVIES_FOR_GENRE_REQUEST
   })
+  try {
+    const response = await fetch(
+      `http://localhost:3014/movies/forgenre/${genre}`
+    )
+    const json = await response.json()
+    dispatch({
+      type: actionTypes.MOVIES_FOR_GENRE_SUCCESS,
+      payload: json
+    })
+  } catch (error) {
+    dispatch({
+      type: actionTypes.MOVIES_FOR_GENRE_FAILURE,
+      payload: error
+    })
+  }
+}
 
 export const createMovie = (
   title,

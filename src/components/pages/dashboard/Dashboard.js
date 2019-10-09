@@ -8,7 +8,7 @@ import MoviesList from './components/MoviesList/MoviesList'
 import GenresList from './components/GenresList/GenresList'
 import { HEADER_LINKS } from '../../../constants/general'
 
-import './styles.css'
+import styles from './Dashboard.module.scss'
 
 const { Sider, Content } = Layout
 
@@ -51,10 +51,10 @@ class Dashboard extends React.Component {
 
     return (
       <Layout>
-        <Sider className="sidebar" breakpoint="lg" collapsedWidth="0">
+        <Sider className={styles.sidebar} breakpoint="lg" collapsedWidth="0">
           <GenresList genres={genres.list} onSelectedGenre={updateDashboard} />
         </Sider>
-        <Content className="content">
+        <Content className={styles.content}>
           <MoviesList
             movies={movies}
             showActions={users.isLoggedIn}

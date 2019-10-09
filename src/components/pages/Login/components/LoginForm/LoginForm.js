@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Icon, Input, Button, Alert } from 'antd'
 
-import './styles.css'
+import styles from './LoginForm.module.scss'
 
 class LoginForm extends React.Component {
   handleSubmit = e => {
@@ -37,17 +37,17 @@ class LoginForm extends React.Component {
     const { isError } = this.props.users
 
     return (
-      <div className="form-wrapper">
+      <div className={styles['form-wrapper']}>
         {isError && (
           <Alert
             type="error"
             message="Invalid email or password"
             banner
-            className="invalid-login"
+            className={styles['invalid-login']}
           />
         )}
 
-        <Form onSubmit={this.handleSubmit} className="login-form">
+        <Form onSubmit={this.handleSubmit} className={styles['login-form']}>
           <Form.Item
             validateStatus={emailError ? 'error' : ''}
             help={emailError || ''}
@@ -87,7 +87,7 @@ class LoginForm extends React.Component {
             <Button
               type="primary"
               htmlType="submit"
-              className="login-form-button"
+              className={styles['login-form-button']}
               disabled={this.hasErrors(getFieldsError())}
             >
               Log in

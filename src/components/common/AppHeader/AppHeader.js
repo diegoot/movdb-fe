@@ -7,36 +7,36 @@ import { HEADER_LINKS } from '../../../constants/general'
 import { logoutUser } from '../../../actions/users'
 import { resetLinks, flagActiveLink } from '../../../actions/header'
 
-import './styles.css'
+import styles from './AppHeader.module.scss'
 
 const AppHeader = props => {
   return (
-    <div className="app-header">
+    <div className={styles['app-header']}>
       <Link to="/">
-        <img src={logo} alt="logo" className="logo" />
+        <img src={logo} alt="logo" className={styles.logo} />
       </Link>
-      <div className="header-links">
+      <div className={styles['header-links']}>
         {props.header[HEADER_LINKS.LOGIN.KEY] && (
-          <span className="header-item">
+          <span className={styles['header-item']}>
             <Link to={HEADER_LINKS.LOGIN.PATH}>{HEADER_LINKS.LOGIN.NAME}</Link>
           </span>
         )}
         {props.header[HEADER_LINKS.ADD_MOVIE.KEY] && (
-          <span className="header-item">
+          <span className={styles['header-item']}>
             <Link to={HEADER_LINKS.ADD_MOVIE.PATH}>
               {HEADER_LINKS.ADD_MOVIE.NAME}
             </Link>
           </span>
         )}
         {props.header[HEADER_LINKS.DASHBOARD.KEY] && (
-          <span className="header-item">
+          <span className={styles['header-item']}>
             <Link to={HEADER_LINKS.DASHBOARD.PATH}>
               {HEADER_LINKS.DASHBOARD.NAME}
             </Link>
           </span>
         )}
         {props.users.isLoggedIn && (
-          <span className="header-item" onClick={props.logoutUser}>
+          <span className={styles['header-item']} onClick={props.logoutUser}>
             logout
           </span>
         )}

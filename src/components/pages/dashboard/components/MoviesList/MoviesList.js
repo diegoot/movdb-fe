@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Card, Icon, Popconfirm, Empty } from 'antd'
 
-import './styles.css'
+import styles from './MoviesList.module.scss'
 
 const { Meta } = Card
 
@@ -12,7 +12,7 @@ const MoviesList = props => {
   return (
     <Row gutter={16} type="flex">
       {movies.list && movies.list.length === 0 && !movies.isFetching && (
-        <Empty className="empty" />
+        <Empty className={styles.empty} />
       )}
       {movies.list &&
         movies.list.map(movie => {
@@ -33,11 +33,11 @@ const MoviesList = props => {
           }
 
           return (
-            <Col lg={8} className="col" key={movie._id}>
+            <Col lg={8} className={styles.col} key={movie._id}>
               <Card
                 hoverable
                 cover={<img alt="movie-cover" src={movie.poster} />}
-                className="card"
+                className={styles.card}
                 bodyStyle={{ flex: 1 }}
                 actions={actions}
               >

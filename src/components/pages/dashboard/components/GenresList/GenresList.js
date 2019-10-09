@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Menu } from 'antd'
 
-import './styles.css'
+import styles from './GenresList.module.scss'
 
 const GenresList = props => {
   const { genres, onSelectedGenre } = props
@@ -13,7 +13,7 @@ const GenresList = props => {
   }
 
   return (
-    <Menu theme="dark" onClick={onClick} className="menu">
+    <Menu theme="dark" onClick={onClick} className={styles.menu}>
       {genres.map(genre => (
         <Menu.Item key={genre._id}>{genre.name}</Menu.Item>
       ))}

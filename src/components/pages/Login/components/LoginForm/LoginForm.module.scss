@@ -3,6 +3,17 @@
   flex-direction: column;
   padding-top: 100px;
   align-items: center;
+
+  .invalid-login {
+    width: 300px;
+    margin-bottom: 10px;
+  }
+
+  .login-form {
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    padding: 10px;
+  }
 }
 
 .login-form {
@@ -13,17 +24,6 @@
 .login-form-button {
   width: 100%;
   margin-bottom: 0;
-}
-
-.form-wrapper .invalid-login {
-  width: 300px;
-  margin-bottom: 10px;
-}
-
-.form-wrapper .login-form {
-  border: 1px solid #d9d9d9;
-  border-radius: 10px;
-  padding: 10px;
 }
 
 .ant-form-item:last-child {

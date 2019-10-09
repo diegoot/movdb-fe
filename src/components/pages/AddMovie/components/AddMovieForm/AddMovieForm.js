@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Form, Input, InputNumber, Button, Select } from 'antd'
 
-import './styles.css'
+import styles from './AddMovieForm.module.scss'
 
 const { Option } = Select
 const { TextArea } = Input
@@ -53,7 +53,7 @@ class AddMovieForm extends React.Component {
     }
 
     return (
-      <div className="add-movie-form-wrapper">
+      <div className={styles['form-wrapper']}>
         <Row type="flex" justify="center">
           <Col xs={{ span: 22 }} md={{ span: 18 }} lg={{ span: 14 }}>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>

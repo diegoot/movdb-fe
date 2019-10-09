@@ -56,7 +56,7 @@ class Dashboard extends React.Component {
         </Sider>
         <Content className="content">
           <MoviesList
-            movies={movies.list}
+            movies={movies}
             showActions={users.isLoggedIn}
             deleteAction={this.deleteMovie}
           />

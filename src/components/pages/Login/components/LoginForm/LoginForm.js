@@ -1,8 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Form, Icon, Input, Button, Alert } from 'antd'
-
-import * as usersActions from '../../../../../actions/users'
 
 import './styles.css'
 
@@ -102,16 +99,4 @@ class LoginForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  users: state.users
-})
-
-const mapDispatchToProps = dispatch => ({
-  loginUser: (email, password) =>
-    dispatch(usersActions.loginUser(email, password))
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Form.create({ name: 'login' })(LoginForm))
+export default Form.create({ name: 'login' })(LoginForm)

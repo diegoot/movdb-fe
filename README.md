@@ -15,3 +15,6 @@ You can filter movies by genre and if you are a resgiter user you will be able t
 5. Go to http://localhost:3000 in your browser
 
 _IMPORTANT:_ You must startup the movdb-be app first in port 3014.
+
+### Live Demo
+Find it [here](https://lit-beach-83931.herokuapp.com/).
